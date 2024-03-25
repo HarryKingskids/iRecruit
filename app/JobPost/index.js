@@ -19,8 +19,14 @@ import {
 } from "firebase/storage";
 import { useNavigation } from "@react-navigation/native"; // Import the navigation hook from React Navigation
 import { router } from "expo-router";
+import { getAuth } from "firebase/auth";
+import { pickImage } from "../../components/service/file";
 
 const JobPost = ({ onPost }) => {
+  const auth = getAuth();
+  const user = auth.currentUser;
+  const email = user.email;
+  console.log("USER", user);
   const [desc, setDesc] = useState("");
   const [companyid, setCompanyid] = useState("");
   const [id, setid] = useState("");
@@ -38,6 +44,7 @@ const JobPost = ({ onPost }) => {
     console.log("id:", id);
     console.log("like:", like);
     console.log("Job:", Job);
+    console.log("Email", email);
 
     // Check if all fields are filled before posting
     // Check if all fields are filled before posting
@@ -57,6 +64,7 @@ const JobPost = ({ onPost }) => {
           id,
           Job,
           createdAt: new Date(),
+          email,
         };
         console.log("before addDoc");
         const result = await addDoc(postsRef, params);
@@ -89,22 +97,6 @@ const JobPost = ({ onPost }) => {
     }
   };
 
-  const pickImage = async () => {
-    console.log("1");
-
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
-    console.log("2", !result.canceled);
-
-    if (!result.canceled) {
-      console.log("3", result);
-      setImage(result.assets[0].uri);
-    }
-  };
   const uploadToFirebase = async (uri, name, onProgress) => {
     console.log("0", uri);
 
@@ -145,6 +137,14 @@ const JobPost = ({ onPost }) => {
     });
   };
 
+  const onSelectImg = async () => {
+    const imgUrl = await pickImage();
+
+    if (imgUrl) {
+      setImage(imgUrl);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <TextInput
@@ -174,7 +174,7 @@ const JobPost = ({ onPost }) => {
       />
 
       <View style={styles.buttonContainer}>
-        <Button title="Pick an image" onPress={pickImage} color="#007bff" />
+        <Button title="Pick an image" onPress={onSelectImg} color="#007bff" />
         {image && <Image source={{ uri: image }} style={styles.image} />}
       </View>
 

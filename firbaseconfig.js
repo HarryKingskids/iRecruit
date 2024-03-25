@@ -3,6 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getStorage } from "firebase/storage";
+// import { getMessaging } from "firebase/messaging";
 const firebaseConfig = {
   apiKey: "AIzaSyC6TcZIKAlMOXmD8oNCKZR2OUFGwIHXigs",
   authDomain: "irecruitforhire.firebaseapp.com",
@@ -19,3 +20,4 @@ export const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app, "gs://irecruitforhire.appspot.com");
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+// export const messaging = getMessaging(app);

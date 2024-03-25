@@ -1,13 +1,23 @@
 {
   "expo": {
     "name": "iRecruit",
+    "eas": {
+      "projectId": "mn.irecruit.khangai"
+    },
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "notification": {
+      "icon": "./assets/notification-icon.png",
+      "color": "#000000"
+    },
     "slug": "iRecruit",
     "version": "1.0.0",
     "scheme": "iRecruit",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -23,7 +33,10 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -36,6 +49,14 @@
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "bcef9e4b-3ad0-48a7-b688-62be1abd5163"
+      }
+    }
   }
 }

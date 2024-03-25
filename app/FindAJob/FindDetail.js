@@ -3,82 +3,90 @@ import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 import { Link } from "expo-router";
 
-const FindDetail = ({ doc }) => {
-  if (!doc) {
-    return null;
-  }
+const FindDetail = ({ doc, postId }) => {
+  const handleSaveButtonClick = () => {
+    console.log("Save button clicked" + doc.data);
+  };
 
   return (
-    <View>
-      <Link
-        style={[styles.row, styles.container, { paddingVertical: 5 }]}
-        href={"/profile/" + doc.userId}
-        asChild
-      >
-        <TouchableOpacity>
-          <Text style={styles.userId}> {doc.userId}</Text>
-        </TouchableOpacity>
-      </Link>
+    <View style={styles.container}>
+      <Text style={styles.email}>{doc.email}</Text>
+
+      <View style={styles.profileContainer}>
+        {doc.profileImg ? (
+          <Image style={styles.profileImg} source={{ uri: doc.profileImg }} />
+        ) : (
+          <Text>No Image</Text>
+        )}
+        <Text style={styles.userId}>{doc.userId}</Text>
+      </View>
 
       <Image
         source={{ uri: doc.img }}
         style={{ width: "100%", aspectRatio: 1 }}
       />
-      <View style={styles.container}>
-        {/* Like, comment, send buttons */}
-        <View style={styles.btnsContainer}>
-          <View style={styles.btnContainer}>
-            <TouchableOpacity style={styles.btn}>
-              <AntDesign name="hearto" size={24} color="black" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btn}>
-              <AntDesign name="message1" size={24} color="black" />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.btn}>
-              <Feather name="send" size={24} color="black" />
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity style={styles.btn}>
-            <MaterialIcons name="save-alt" size={24} color="black" />
-          </TouchableOpacity>
-        </View>
-        {/* Post description */}
-        <Text style={styles.desc}>{doc.desc}</Text>
+
+      <View style={styles.actionContainer}>
+        <TouchableOpacity style={styles.actionBtn}>
+          <AntDesign name="hearto" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.actionBtn}>
+          <AntDesign name="message1" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.actionBtn}>
+          <Feather name="send" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.actionBtn, styles.saveBtn]}
+          onPress={handleSaveButtonClick}
+        >
+          <MaterialIcons name="save-alt" size={24} color="black" />
+        </TouchableOpacity>
       </View>
+
+      <Text style={styles.desc}>{doc.desc}</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  profileImg: { width: 29, height: 29, borderRadius: 29 / 2 },
-  boldText: {
-    fontWeight: "bold",
-  },
-  likedText: {
-    fontSize: 15,
-    fontWeight: "400",
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 4,
-  },
-  btnsContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
   container: {
+    flex: 1,
     paddingHorizontal: 18,
+    paddingTop: 10,
   },
-  btnContainer: {
+  profileContainer: {
     flexDirection: "row",
-    gap: 13,
-    paddingVertical: 12,
+    alignItems: "center",
+  },
+  profileImg: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 10,
   },
   userId: {
     fontSize: 18,
     fontWeight: "bold",
+  },
+  email: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  actionContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 10,
+  },
+  actionBtn: {
+    padding: 10,
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "black",
+  },
+  saveBtn: {
+    backgroundColor: "black",
   },
   desc: {
     fontSize: 18,

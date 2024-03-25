@@ -12,6 +12,7 @@ import { collection, doc, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../../firbaseconfig";
 import { useNavigation } from "@react-navigation/native"; // Import useNavigation from react-navigation/native
 import FindDetail from "./FindDetail";
+import About from "../home/about";
 
 const FindAJob = () => {
   const [list, setList] = useState([]);
@@ -55,7 +56,9 @@ const FindAJob = () => {
       <Text style={styles.logo}>Welcome to iRecruit</Text>
       <ScrollView>
         {list.map((data, index) => (
-          <FindDetail key={index} doc={data} />
+          <View>
+            <FindDetail key={index} postId={data.id} doc={data} />
+          </View>
         ))}
       </ScrollView>
     </SafeAreaView>
