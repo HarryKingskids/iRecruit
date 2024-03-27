@@ -1,5 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  TextComponent,
+} from "react-native";
 import { Link } from "expo-router";
 
 const Home = () => {
@@ -14,6 +20,7 @@ const Home = () => {
         >
           <Text style={styles.buttonText}>Post a Job</Text>
         </TouchableOpacity>
+        <Text>MONGOL</Text>
       </Link>
       <Link href="/FindAJob/" asChild>
         <TouchableOpacity style={styles.button}>
