@@ -7,8 +7,15 @@ import {
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
-import React, { useState } from "react";
-import { Button, Image, StyleSheet, TextInput, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  Alert,
+  Button,
+  Image,
+  StyleSheet,
+  TextInput,
+  View,
+} from "react-native";
 import { pickImage } from "../../components/service/file";
 import { db } from "../../firbaseconfig";
 
@@ -23,6 +30,10 @@ const JobPost = ({ onPost }) => {
   const [like, setLike] = useState("");
   const [Job, setJob] = useState("");
   const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    Alert.alert("TEST", "TEST");
+  }, []);
 
   const onProgress = (data) => {
     console.log("onProgress", data);

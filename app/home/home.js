@@ -13,11 +13,8 @@ const Home = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to iRecruit!</Text>
-      <Link href={"/JobPost/"} asChild>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => console.log("Navigate to JobPost")}
-        >
+      <Link href={"JobPost"} asChild>
+        <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Post a Job</Text>
         </TouchableOpacity>
       </Link>
