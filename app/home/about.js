@@ -115,6 +115,12 @@ const About = ({
         <Text style={styles.bioName}>
           {currentUser ? currentUser.email : "Unknown"}
         </Text>
+        <Text style={styles.bioDesc}>
+          {currentUser ? currentUser.bio1 : "Unknown"}
+        </Text>
+        <Text style={styles.bioDesc}>
+          {currentUser ? currentUser.bio2 : "Unknown"}
+        </Text>
         <Text style={styles.bioDesc}>{bio1}</Text>
         <Text style={styles.bioDesc}>{bio2}</Text>
       </View>

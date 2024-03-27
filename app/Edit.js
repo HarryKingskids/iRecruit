@@ -45,6 +45,7 @@ export default function Edit() {
       await setDoc(userRef, user);
 
       console.log("SAVED");
+      router.push("FindAJob/profile");
     } catch (error) {
       console.log("ERROR", error);
     }

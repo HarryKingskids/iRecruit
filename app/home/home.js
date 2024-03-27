@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 
 const Home = () => {
+  console.log("YOU ARE IN--------------------------------------");
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to iRecruit!</Text>

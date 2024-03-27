@@ -1,26 +1,16 @@
-import React, { useState } from "react";
-import { Button, Image, View, TextInput, StyleSheet } from "react-native";
-import { db } from "../../firbaseconfig";
-import * as ImagePicker from "expo-image-picker";
-import {
-  addDoc,
-  collection,
-  doc,
-  getDoc,
-  setDoc,
-  updateDoc,
-} from "firebase/firestore";
+import { router } from "expo-router";
+import { getAuth } from "firebase/auth";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import {
   getDownloadURL,
   getStorage,
   ref,
-  uploadBytes,
   uploadBytesResumable,
 } from "firebase/storage";
-import { useNavigation } from "@react-navigation/native"; // Import the navigation hook from React Navigation
-import { router } from "expo-router";
-import { getAuth } from "firebase/auth";
+import React, { useState } from "react";
+import { Button, Image, StyleSheet, TextInput, View } from "react-native";
 import { pickImage } from "../../components/service/file";
+import { db } from "../../firbaseconfig";
 
 const JobPost = ({ onPost }) => {
   const auth = getAuth();
@@ -33,7 +23,6 @@ const JobPost = ({ onPost }) => {
   const [like, setLike] = useState("");
   const [Job, setJob] = useState("");
   const [image, setImage] = useState(null);
-  const navigation = useNavigation(); // Initialize the navigation hook
 
   const onProgress = (data) => {
     console.log("onProgress", data);

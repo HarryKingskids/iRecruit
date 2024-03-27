@@ -8,13 +8,9 @@
       "ios",
       "android"
     ],
-    "notification": {
-      "icon": "./assets/notification-icon.png",
-      "color": "#000000"
-    },
     "slug": "iRecruit",
     "version": "1.0.0",
-    "scheme": "iRecruit",
+    "scheme": "irecruit",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -57,6 +53,12 @@
       "eas": {
         "projectId": "bcef9e4b-3ad0-48a7-b688-62be1abd5163"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/bcef9e4b-3ad0-48a7-b688-62be1abd5163"
     }
   }
 }

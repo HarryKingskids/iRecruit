@@ -5,7 +5,7 @@ import { Redirect } from "expo-router";
 export default function Page() {
   return (
     <View>
-      <Redirect href="/notitest" />
+      <Redirect href="/signup" />
     </View>
   );
 }

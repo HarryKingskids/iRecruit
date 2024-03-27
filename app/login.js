@@ -31,6 +31,7 @@ const Login = () => {
       setError("");
       router.push("home/home");
     } catch (error) {
+      console.log("ALDAAAA------------------------------------");
       const message = error.message;
       const code = error.code;
       if (code == "auth/invalid-credential") {
