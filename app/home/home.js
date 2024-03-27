@@ -23,7 +23,7 @@ const Home = () => {
       </Link>
       <Link href="/FindAJob/" asChild>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Find a Job</Text>
+          <Text style={styles.buttonText}>Find a Job.</Text>
         </TouchableOpacity>
       </Link>
     </View>
