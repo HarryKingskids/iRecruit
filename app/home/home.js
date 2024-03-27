@@ -20,7 +20,6 @@ const Home = () => {
         >
           <Text style={styles.buttonText}>Post a Job</Text>
         </TouchableOpacity>
-        <Text>MONGOL</Text>
       </Link>
       <Link href="/FindAJob/" asChild>
         <TouchableOpacity style={styles.button}>
